@@ -19,7 +19,7 @@ import br.com.caelum.leilao.servico.Avaliador;
  * @author andersonnogueira
  * @since Feb 12, 2021
  */
-public class TesteDoAvaliador {
+public class AvaliadorTest {
 
 	@Test
     public void deveEntenderLancesEmOrdemCrescente() {
