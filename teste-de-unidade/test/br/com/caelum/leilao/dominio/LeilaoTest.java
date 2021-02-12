@@ -26,6 +26,16 @@ public class LeilaoTest {
 	public void naoDeveAceitarDoisLancesSeguidosDoMesmoUsuario() {
 		Leilao leilao = new Leilao("Lenovo 13");
 		leilao.propoe(new Lance(new Usuario("Zé Neto"), 2000));
+		
+		leilao.propoe(new Lance(new Usuario("Zé Neto"), 12000));
+		
+		assertEquals(1, leilao.getLances().size());
+	}
+	
+	@Test
+	public void naoDeveAceitarMaisDeCinco5DoMesmoUsuario() {
+		Leilao leilao = new Leilao("Lenovo 13");
+		leilao.propoe(new Lance(new Usuario("Zé Neto"), 2000));
 		leilao.propoe(new Lance(new Usuario("Ricardo"), 3000));
 		
 		leilao.propoe(new Lance(new Usuario("Zé Neto"), 4000));
@@ -45,13 +55,5 @@ public class LeilaoTest {
 		
 		assertEquals(10, leilao.getLances().size());
 		assertEquals(11000.0, leilao.getLances().get(leilao.getLances().size() -1).getValor(), 0.00001);
-	}
-	
-	@Test
-	public void naoDeveAceitarMaisDeCinco5DoMesmoUsuario() {
-		Leilao leilao = new Leilao("Lenovo 13");
-		leilao.propoe(new Lance(new Usuario("Zé Neto"), 2000));
-		
-		assertEquals(1, leilao.getLances().size());
 	}
 }
