@@ -3,13 +3,14 @@
  */
 package br.com.caelum.leilao.teste;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import br.com.caelum.leilao.dominio.Lance;
 import br.com.caelum.leilao.dominio.Leilao;
 import br.com.caelum.leilao.dominio.Usuario;
 import br.com.caelum.leilao.servico.Avaliador;
-import junit.framework.Assert;
 
 
 /**
@@ -36,7 +37,7 @@ public class TesteDoAvaliador {
         double maiorEsperado = 400;
         double menorEsperado = 250;
 
-        Assert.assertEquals(maiorEsperado, leiloeiro.getMaiorLance(), 0.00001);
-        Assert.assertEquals(menorEsperado, leiloeiro.getMenorLance(), 0.00001);
+        assertEquals(maiorEsperado, leiloeiro.getMaiorLance(), 0.00001);
+        assertEquals(menorEsperado, leiloeiro.getMenorLance(), 0.00001);
     }
 }
