@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.caelum.leilao.builder.CriadorDeLeilao;
 import br.com.caelum.leilao.servico.Avaliador;
 
 
@@ -35,12 +36,12 @@ public class AvaliadorTest {
 	@Test
     public void deveEntenderLancesEmOrdemCrescente() {
 
-        Leilao leilao = new Leilao("Playstation 3 Novo");
-
-        leilao.propoe(new Lance(joao, 300.0));
-        leilao.propoe(new Lance(jose, 400.0));
-        leilao.propoe(new Lance(maria, 250.0));
-
+        Leilao leilao = new CriadorDeLeilao().para("Playstation 3 Novo")
+				.lance(maria, 250.0)
+				.lance(jose, 270.0)
+				.lance(joao, 300.0)
+				.lance(jose, 400.0)
+				.constroi();
         
         leiloeiro.avalia(leilao);
         
@@ -54,12 +55,12 @@ public class AvaliadorTest {
 	@Test
 	public void deveEncontrarOsTresMaioresLances() {
 		
-		Leilao leilao = new Leilao("Playstation 3 Novo");
-		
-		leilao.propoe(new Lance(maria, 250.0));
-		leilao.propoe(new Lance(jose, 270.0));
-		leilao.propoe(new Lance(joao, 300.0));
-		leilao.propoe(new Lance(jose, 400.0));
+		Leilao leilao = new CriadorDeLeilao().para("Playstation 3 Novo")
+				.lance(maria, 250.0)
+				.lance(jose, 270.0)
+				.lance(joao, 300.0)
+				.lance(jose, 400.0)
+				.constroi();
 		
 		
 		leiloeiro.avalia(leilao);
