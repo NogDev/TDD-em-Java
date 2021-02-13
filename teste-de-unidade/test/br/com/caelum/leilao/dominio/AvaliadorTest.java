@@ -32,6 +32,13 @@ public class AvaliadorTest {
 		this.jose = new Usuario("José");
 		this.maria = new Usuario("Maria");
 	}
+	
+	@Test(expected=RuntimeException.class)
+	public void naoAvaliarLeilaoSemLance() {
+		Leilao leilao = new CriadorDeLeilao().para("Super Nintendo").constroi();
+		
+		leiloeiro.avalia(leilao);
+	}
 
 	@Test
     public void deveEntenderLancesEmOrdemCrescente() {
